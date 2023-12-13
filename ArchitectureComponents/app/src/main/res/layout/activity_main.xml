@@ -7,12 +7,75 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Android Architecture Components"
+        android:layout_marginTop="24dp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/btn_implementation1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="01 Intro"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <Button
+        android:id="@+id/btn_implementation2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="02 "
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_implementation1" />
+
+    <Button
+        android:id="@+id/btn_implementation3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="03 "
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_implementation2" />
+
+    <Button
+        android:id="@+id/btn_implementation4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="04 "
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_implementation3" />
+
+    <Button
+        android:id="@+id/btn_implementation5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="05 "
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_implementation4" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_implementation5" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
