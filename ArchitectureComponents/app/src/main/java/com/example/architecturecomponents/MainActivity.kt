@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
+import com.example.architecturecomponents.a02lifecycleaware.A02MainActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,14 +23,12 @@ class MainActivity : AppCompatActivity() {
         val listener= View.OnClickListener { view ->
             when (view.id) {
                 R.id.btn_implementation1 -> {
-//                    Toast.makeText(this,"Use *codelab-while-in-use-location* app", Toast.LENGTH_SHORT).show()
-//                    val intent = Intent(this, A02MainActivity::class.java)
-//                    startActivity(intent)
+                    Toast.makeText(this,"Check Theory File", Toast.LENGTH_LONG).show()
                 }
-//                R.id.btn_implementation2 -> {
-//                    val intent = Intent(this, LocationActivity2::class.java)
-//                    startActivity(intent)
-//                }
+                R.id.btn_implementation2 -> {
+                    val intent = Intent(this, A02MainActivity::class.java)
+                    startActivity(intent)
+                }
 //                R.id.btn_implementation3 -> {
 //                    val intent = Intent(this, LocationActivity3::class.java)
 //                    startActivity(intent)
