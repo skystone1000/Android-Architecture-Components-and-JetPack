@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import com.example.architecturecomponents.a02lifecycleaware.A02MainActivity
+import com.example.architecturecomponents.a03viewmodel.A03MainActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,10 +30,10 @@ class MainActivity : AppCompatActivity() {
                     val intent = Intent(this, A02MainActivity::class.java)
                     startActivity(intent)
                 }
-//                R.id.btn_implementation3 -> {
-//                    val intent = Intent(this, LocationActivity3::class.java)
-//                    startActivity(intent)
-//                }
+                R.id.btn_implementation3 -> {
+                    val intent = Intent(this, A03MainActivity::class.java)
+                    startActivity(intent)
+                }
 //                R.id.btn_implementation4 -> {
 //                    val intent = Intent(this, LocationActivity4::class.java)
 //                    startActivity(intent)

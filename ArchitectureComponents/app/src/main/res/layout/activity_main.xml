@@ -43,7 +43,7 @@
         android:id="@+id/btn_implementation3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="03 "
+        android:text="03 ViewModel"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
