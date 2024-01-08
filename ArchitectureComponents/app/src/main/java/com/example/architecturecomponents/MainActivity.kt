@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.Toast
 import com.example.architecturecomponents.a02lifecycleaware.A02MainActivity
 import com.example.architecturecomponents.a03viewmodel.A03MainActivity
+import com.example.architecturecomponents.a04viewmodelfactory.A04MainActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,10 +35,10 @@ class MainActivity : AppCompatActivity() {
                     val intent = Intent(this, A03MainActivity::class.java)
                     startActivity(intent)
                 }
-//                R.id.btn_implementation4 -> {
-//                    val intent = Intent(this, LocationActivity4::class.java)
-//                    startActivity(intent)
-//                }
+                R.id.btn_implementation4 -> {
+                    val intent = Intent(this, A04MainActivity::class.java)
+                    startActivity(intent)
+                }
 //                R.id.btn_implementation5 -> {
 //                    // Method 1 - to instantiate a fragment
 //                    // supportFragmentManager.beginTransaction().replace(R.id.fragment_container_view, LocationFragment5()).commit()
