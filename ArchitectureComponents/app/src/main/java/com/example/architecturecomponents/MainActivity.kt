@@ -9,6 +9,7 @@ import android.widget.Toast
 import com.example.architecturecomponents.a02lifecycleaware.A02MainActivity
 import com.example.architecturecomponents.a03viewmodel.A03MainActivity
 import com.example.architecturecomponents.a04viewmodelfactory.A04MainActivity
+import com.example.architecturecomponents.a05quotify.A05MainActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,6 +38,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.btn_implementation4 -> {
                     val intent = Intent(this, A04MainActivity::class.java)
+                    startActivity(intent)
+                }
+                R.id.btn_implementation5 -> {
+                    val intent = Intent(this, A05MainActivity::class.java)
                     startActivity(intent)
                 }
 //                R.id.btn_implementation5 -> {
