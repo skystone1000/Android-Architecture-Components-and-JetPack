@@ -13,6 +13,9 @@
         android:theme="@style/Theme.ArchitectureComponents"
         tools:targetApi="31">
         <activity
+            android:name=".a06liveData.A06MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".a05quotify.A05MainActivity"
             android:exported="false" />
         <activity

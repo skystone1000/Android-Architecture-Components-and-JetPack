@@ -10,6 +10,7 @@ import com.example.architecturecomponents.a02lifecycleaware.A02MainActivity
 import com.example.architecturecomponents.a03viewmodel.A03MainActivity
 import com.example.architecturecomponents.a04viewmodelfactory.A04MainActivity
 import com.example.architecturecomponents.a05quotify.A05MainActivity
+import com.example.architecturecomponents.a06liveData.A06MainActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         val button3 = findViewById<View>(R.id.btn_implementation3) as Button
         val button4 = findViewById<View>(R.id.btn_implementation4) as Button
         val button5 = findViewById<View>(R.id.btn_implementation5) as Button
+        val button6 = findViewById<View>(R.id.btn_implementation6) as Button
 
 
         val listener= View.OnClickListener { view ->
@@ -44,6 +46,10 @@ class MainActivity : AppCompatActivity() {
                     val intent = Intent(this, A05MainActivity::class.java)
                     startActivity(intent)
                 }
+                R.id.btn_implementation6 -> {
+                    val intent = Intent(this, A06MainActivity::class.java)
+                    startActivity(intent)
+                }
 //                R.id.btn_implementation5 -> {
 //                    // Method 1 - to instantiate a fragment
 //                    // supportFragmentManager.beginTransaction().replace(R.id.fragment_container_view, LocationFragment5()).commit()
@@ -59,6 +65,7 @@ class MainActivity : AppCompatActivity() {
         button3.setOnClickListener(listener)
         button4.setOnClickListener(listener)
         button5.setOnClickListener(listener)
+        button6.setOnClickListener(listener)
 
     }
 }

@@ -37,7 +37,7 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.9.0")
+    implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
@@ -47,13 +47,15 @@ dependencies {
 
 
     // New Dependencies
-    val lifecycle_version = "2.7.0"
-    val arch_version = "2.2.0"
+    val lifeCycleVersion = "2.7.0"
 
     // ViewModel
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifeCycleVersion")
 
 
-    implementation("com.google.code.gson:gson:2.8.6")
+    implementation("com.google.code.gson:gson:2.8.9")
+
+    // Live Data
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifeCycleVersion")
 
 }
