@@ -79,13 +79,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_implementation5" />
 
+    <Button
+        android:id="@+id/btn_implementation7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="07 Data Binding"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_implementation6" />
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_implementation6" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_implementation7" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

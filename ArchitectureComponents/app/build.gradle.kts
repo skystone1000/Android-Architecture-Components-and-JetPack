@@ -33,6 +33,11 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    // Data Binding - Lec a07
+    buildFeatures{
+        dataBinding = true
+    }
 }
 
 dependencies {
