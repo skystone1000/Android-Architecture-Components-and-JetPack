@@ -1,0 +1,280 @@
+// MVVM Playlist
+
+/*
+------------------------------------------------------------------------------
+01 Android Architecture Components & Jetpack Intro
+
+Brief Overview of Architecture Components
+Problems with existing system
+What is jetpack?
+
+Android Architecture Components
+	- Android has a component-based architecture - where you use different compoents like Activities, Fragments, Services, etc.
+	- It is Android that manages these components for you
+	- Till now, we have been writing code in our android activities  or fragments for all purposes - whether it is data fetching or storing data in SQLite.
+	- This is where the problem lies.
+
+Architectures
+	- MVC
+	- MVP
+	- MVVM
+
+Logic For different architectures
+	- Separation of concerns 
+	- Data Driven Applications
+
+Jetpack Components
+	a) Architecture
+		- Data Binding
+		- Lifecycles
+		- LiveData
+		- Navigation
+		- Paging
+		- Room
+		- ViewModel
+		- WorkManager
+	b) Foundation
+		- AppCompact
+		- Android KTX
+		- Multidex
+		- Test
+	c) UI
+		- Animation & Transition
+		- Auto, TV & Wear
+		- Emoji
+		- Fragment
+		- Layout
+		- Palette
+	d) Behaviour
+		- Download Manager
+		- Media & Playback
+		- Permissions
+		- Notifications
+		- Sharing
+		- Slices 
+
+Benefits of Android Architecture Components
+	- Collection of Libraries that helps build robust, testable and maintainable android apps.
+	- Less Boilerplate code - Room, Navigation Components, Paging, Etc
+	- High Quality, Production ready Apps
+ */
+
+
+/* 
+------------------------------------------------------------------------------
+02 Android LifeCycle Aware Components
+
+- Most of the code is written inside Activity Lifecycle Methods - onCreate, onResume, onPause, etc
+	Due to this Activity has multiple responsibilities
+- But there are scenarios where we want to take actions based on activity life cycle 
+- For Ex
+	Access the User's Location
+	Playing Video
+	Downloading Images
+- LifeCycle Owner(Activities/ Fragments) / LifeCycle Observer(Components which look at others lifecycle)
+
+*/
+
+/* 
+------------------------------------------------------------------------------
+03 Android ViewModel Tutorial Android Jetpack Components Hindi- CheezyCode #3
+
+AGENDA
+	What is ViewModel?
+	Need of ViewModel
+	Examples
+
+Counter Application
+	Counter(Variables) looses data when configuration is changed(like from landscape to portrait)
+	to take care of that so that we do not loose info we have view model
+
+View Model
+	- Model for your views such as Activity or Fragment
+	- View Models are lifecycle aware
+	- Data required for your screen is stored at one place i.e. ViewModel.
+	  It may involve formatting that data in a particular format, accumulating data,
+	  any logic in displaying this data in your UI
+*/
+
+mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+
+setText()
+txtCounter.text = mainViewModel.count.toString()
+
+/* 
+------------------------------------------------------------------------------
+04 Android ViewModel Factory Tutorial
+
+AGENDA
+	ViewModel Factory
+	Use of ViewModel Factory
+	Examples
+
+For "ViewModel" we can not pass arguments directly to it as its objects are created 
+by "ViewModelProvider" so we need ViewModelFactory when we need to pass arguments to viewModel
+
+data -> ViewModelFactory -> ViewModel Object
+*/
+
+class MainViewModelFactory(val counter:Int) : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        return MainViewModel(counter) as T
+    }
+}
+
+
+mainViewModel = ViewModelProvider(this, MainViewModelFactory(10)).get(MainViewModel::class.java)
+
+/* 
+------------------------------------------------------------------------------
+05 Complete Android Quotes App ViewModel 
+
+Quotes APP with
+	ViewModel
+	ViewModelFactory
+*/
+
+/* 
+------------------------------------------------------------------------------
+06 Android LiveData Tutorial 
+
+AGENDA
+	LiveData
+	LiveData & Mutable LiveData
+	Examples
+
+LiveData
+	- Observable Data Holder Class
+	- Lifecycle aware (Components which are in active state)
+*/
+
+// -- ViewModel
+class MainViewModel : ViewModel() {
+    // MutableLiveData can be changed from Main Activity as well so we do not prefer that
+    // val factsLiveData = MutableLiveData<String>("This is a fact")
+
+    private val factsLiveDataObject = MutableLiveData<String>("This is a fact")
+
+    val factsLiveData : LiveData<String>
+        get() = factsLiveDataObject
+
+    fun updateLiveData(){
+        // factsLiveData.value = "Another Fact"
+        factsLiveDataObject.value = "Another Fact"
+    }
+}
+
+// -- MainActivity
+override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+
+        mainViewModel.factsLiveData.observe(this, {
+            factsTextView.text = it
+        })
+
+        btnUpdate.setOnClickListener{
+            mainViewModel.updateLiveData()
+        }
+    }
+
+/* 
+------------------------------------------------------------------------------
+07 Android Data Binding Tutorial
+
+AGENDA
+	Data Binding
+	Examples
+
+Data Binding
+	- Support Library that allows you to bind UI components in your 
+	layouts to data sources in your app using a declarative format 
+	rather than programatically
+
+	Till now
+	val emailTextView = findViewById<TextView>(R.id.email_text_view)
+	emailTextView.text = model.emailAddress
+
+	Updated
+	<TextView android:yexy = "@{model.emailAddress}"
+
+	- Benefits
+		No need of "findViewById"
+		Binding is compile time so no NULL pointer Exception
+		Performance and No memory Leaks
+*/
+
+// --Quote
+data class Quote(val text:String, val author:String) {}
+
+// --MainActivity
+binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+val quoteObj = Quote("DO, or do not. There is no try", "Yoda")
+binding.quote = quoteObj
+
+// --activity_main.xml
+<data>
+    <variable
+        name="quote"
+        type="com.example.a07databindingexample.Quote" />
+</data>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/quoteText"
+        android:text="@{quote.text}"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/quoteAuthor"
+        android:text="@{quote.author}"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="26sp" />
+</LinearLayout>
+
+/* 
+------------------------------------------------------------------------------
+08 Android Data Binding with LiveData - One Way & Two Way Data Binding
+
+AGENDA
+	Data Binding with ViewModel
+	Data Binding with LiveData
+	One Way Binding
+	Two Way Binding
+*/
+
+
+
+/* 
+------------------------------------------------------------------------------
+11 Room Database & Type Converters in Android - Singleton Pattern Room
+
+AGENDA
+	Room Type COnverters
+	Singleton Pattern
+	Examples 
+
+
+
+
+Interface singleton classses
+MVVM , Navigation comeponents
+Activity , Fragment
+
+google ques
+
+scope function
+apply let run
+*/
